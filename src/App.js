@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { NavBar } from './components/Navbar';
+import { TopCard } from './components/TopCard';
+import { ChartCard } from './components/ChartCard';
+import { SummaryCard } from './components/SummaryCard';
+ 
 import './App.css';
+// import _ from 'lodash';
 
-function App() {
+function App() { 
+  const [population, setPopulation] = useState([])
+
+  useEffect(() => {
+    fetch('/data/population').then(res => res.json()).then(data => {
+      console.log('hello')
+      console.log(data)
+      const t = data.map(i => i.population)
+      setPopulation(t)
+    });
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar/>
+      <TopCard/>
+      <SummaryCard/>
+      <ChartCard/>
+      <span className='hide'>{population}</span>
     </div>
   );
 }

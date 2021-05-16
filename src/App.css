@@ -1,3 +1,7 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 .App {
   text-align: center;
 }
@@ -35,4 +39,53 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.hide {
+  display: None;
+}
+
+.navbar {
+  background-color: #48AFF0 !important;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-button {
+  color: white !important;
+}
+
+.nav-card {
+  text-align: left;
+}
+
+.chart-card {
+  background-color: #F5F8FA !important;
+  text-align: left;
+  padding-top: 5px;
+}
+
+.chart-card-div {
+  padding: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 25% 25% auto;
+  grid-template-rows: 200px auto;
+  column-gap: 10px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.first-card {
+  grid-column-start: 1;
+}
+
+.second-card {
+  grid-column-start: 2;
+}
+
+.third-card {
+  grid-column-start: 3;
 }
