@@ -44,12 +44,20 @@ const chartConfig = {
             markLine: {
                 data: [
                 [
-                { name: "Relaxed lockdown", xAxis: '2021-05-01',yAxis: 0  },
-                { name: "end", xAxis: '2021-05-01',  yAxis:'max' },
+                { name: "Lockdown relaxed", xAxis: '2021-05-17',yAxis: 0  },
+                { name: "end", xAxis: '2021-05-17',  yAxis:'max' },
+                ],
+                [
+                    { name: "First vaccination", xAxis: '2020-12-08',yAxis: 0  },
+                    { name: "end", xAxis: '2020-12-08',  yAxis:'50000' },
+                ],
+                [
+                    { name: "UK enters third lockdown", xAxis: '2021-01-02',yAxis: 0  },
+                    { name: "end", xAxis: '2021-01-02',  yAxis:'max' },
                 ]
                 ],
                 lineStyle: {
-                    color: "rgba(242, 145, 72, 1)",
+                    color: "#10161A",
                 }
             }
             

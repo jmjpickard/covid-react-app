@@ -12,11 +12,13 @@ import chartConfig from '../utils/chartConfig';
 export const ChartCard = () => {
     const EngPopulation = 55980000;
 
+    // set up state for api call, date range and chart
     const [covidData, setCovidData] = useState([]);
     const [startDate, setStartDate] = useState(new Date('2020-03-01'));
     const [endDate, setEndDate] = useState(new Date());
     const [chart, setChart] = useState(chartConfig);
 
+    // define api call endpoint
     const endpoint = (
         'https://api.coronavirus.data.gov.uk/v1/data?' +
         'filters=areaType=nation;areaName=england&' +
@@ -54,13 +56,6 @@ export const ChartCard = () => {
         }  
     }
 
-    // const dateCallback = useCallback(
-    //     () => {
-    //         filterDataOnDate(covidData)
-    //     }, [startDate, endDate, covidData, filterDataOnDate]
-    // )
-
-    // fetch by region, new cases, vax first dose, vax second dose, hospitalisations
 
     useEffect(() => {
         fetch(endpoint).then(r => r.json())
@@ -70,13 +65,6 @@ export const ChartCard = () => {
             })
     }, [endpoint]);
 
-    // useEffect(() => {
-    //     const newCovidData = covidData.filter(row => {
-    //         return row.date >= new Date(startDate).toISOString() &&
-    //                row.date <= new Date(endDate).toISOString()
-    //     })
-    //     setCovidData(newCovidData)
-    // }, [startDate, endDate])
 
    // watches for changes in covidData and re-plots the chart
     useEffect(() => {
@@ -108,10 +96,6 @@ export const ChartCard = () => {
             ]
         }
         setChart(newConfig)
-        // chartConfig.xAxis.data = covidData.length ? covidData.slice().reverse().map(item => item.date) : []
-        // chartConfig.series[0].data = covidData.length ? covidData.slice().reverse().map(item => item.newCases) : []
-        // chartConfig.series[1].data = getVaxPct(covidData).firstDose
-        // chartConfig.series[2].data = getVaxPct(covidData).secondDose   
                 
     }, [covidData, startDate, endDate])
 
@@ -119,7 +103,7 @@ export const ChartCard = () => {
     
     return (
         <div className='chart-card-div'>
-            <Card interactive={true} elevation={Elevation.TWO} className='chart-card'>
+            <Card interactive={true} elevation={Elevation.ONE} className='chart-card'>
                 <h2>View infection or hospitalisation rates against the proportion of population that is vaccinated</h2>
                 <p>Use the date range to filter for a specific time period</p>
                 <DateRangeInput
